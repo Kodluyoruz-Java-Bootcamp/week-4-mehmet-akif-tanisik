@@ -1,0 +1,16 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: emlakcepte-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: emlakcepte-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/users/**,/realties/**
+        - id: emlakcepte-banner-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/banners/**
